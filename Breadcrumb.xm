@@ -1,13 +1,13 @@
 #define LHBLog(fmt, ...) NSLog((@"%s[Breadcrumb] " fmt @"%s"), "\e[1;35m", ##__VA_ARGS__, "\x1B[0m")
 #import <substrate.h>
 #import <Global.h>
-#import <LBGlobal.h>
+#import <DSGlobal.h>
 
 %hook SBMainDisplaySceneManager
 	- (_Bool)_shouldBreadcrumbApplication:(id)arg1 withTransitionContext:(id)arg2 {
 		if (IN_SPRINGBOARD){
-			if ([[LBGlobal sharedInstance] shouldHideBreadcrumb]){
-				[[LBGlobal sharedInstance] setShouldHideBreadcrumb:NO];
+			if ([[DSGlobal sharedInstance] shouldHideBreadcrumb]){
+				[[DSGlobal sharedInstance] setShouldHideBreadcrumb:NO];
 				return NO;
 			}
 			else
@@ -32,7 +32,7 @@
 %ctor {
 
 	if (IN_SPRINGBOARD){
-		[LBGlobal sharedInstance];
+		[DSGlobal sharedInstance];
 	}
 
 	LHBLog(@"Everything looks good.");
