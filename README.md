@@ -71,4 +71,4 @@ Change a Breadcrumb BundleId.
 
 
 ## License
-Licensed under [Apache License, version 2.0](https://github.com/douglas-srs/Breadcrumb/LICENSE.md).
+Licensed under [Apache License, version 2.0](https://github.com/douglas-srs/Breadcrumb/blob/master/LICENSE.md).
