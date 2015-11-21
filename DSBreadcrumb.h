@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "headers.h"
 
-@interface UIBreadcrumbActionItem : NSObject {
+@interface DSBreadcrumb : NSObject {
 	NSString *_bundleId;
 	NSString *_title;
 	id /*block*/ _handler;
@@ -14,9 +14,9 @@
 @property (nonatomic, retain) id handler;
 @property (nonatomic, retain) UISystemNavigationActionDestinationContext *navigationContext;
 @property (nonatomic, retain) UISystemNavigationAction *navigationAction;
--(UIBreadcrumbActionItem*)initWithTitle:(NSString*)title andBundleId:(NSString*)bundleId;
--(UIBreadcrumbActionItem*)initWithTitle:(NSString*)title andBundleId:(NSString*)bundleId withHandler:(id/*block*/)handler;
--(UIBreadcrumbActionItem*)initWithVisibleBreadcrumb;
+-(DSBreadcrumb*)initWithTitle:(NSString*)title andBundleId:(NSString*)bundleId;
+-(DSBreadcrumb*)initWithTitle:(NSString*)title andBundleId:(NSString*)bundleId withHandler:(id/*block*/)handler;
+-(DSBreadcrumb*)initWithVisibleBreadcrumb;
 -(NSString*)bundleId;
 -(void)setBundleId:(NSString*)bundleId;
 -(NSString*)title;

@@ -1,4 +1,4 @@
-Package: net.douglassoares.libbreadcrumb
+Package: net.douglassoares.breadcrumb
 Name: libBreadcrumb
 Depends: com.rpetrich.rocketbootstrap
 Version: 0.0.1

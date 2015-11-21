@@ -3,40 +3,40 @@ THEOS_BUILD_DIR = Packages
 ARCHS = armv7 arm64
 include theos/makefiles/common.mk
 
-FRAMEWORK_NAME = libBreadcrumb
-libBreadcrumb_FILES = libBreadcrumb.xm UIBreadcrumbActionItem.mm LBGlobal.m
-libBreadcrumb_INSTALL_PATH = /Library/Frameworks
-libBreadcrumb_FRAMEWORKS = UIKit MobileCoreServices
-libbreadcrumb_PRIVATE_FRAMEWORKS = AppSupport
-libBreadcrumb_PUBLIC_HEADERS = UIBreadcrumbActionItem.h
-libBreadcrumb_LIBRARIES = substrate rocketbootstrap
+FRAMEWORK_NAME = Breadcrumb
+Breadcrumb_FILES = Breadcrumb.xm DSBreadcrumb.mm LBGlobal.m
+Breadcrumb_INSTALL_PATH = /Library/Frameworks
+Breadcrumb_FRAMEWORKS = UIKit MobileCoreServices
+Breadcrumb_PRIVATE_FRAMEWORKS = AppSupport
+Breadcrumb_PUBLIC_HEADERS = DSBreadcrumb.h
+Breadcrumb_LIBRARIES = substrate rocketbootstrap
 
 include $(THEOS_MAKE_PATH)/framework.mk
 
-after-libBreadcrumb-all::
+after-Breadcrumb-all::
 	# create directories
-	mkdir -p $(THEOS_OBJ_DIR)/libBreadcrumb.framework/Headers
+	mkdir -p $(THEOS_OBJ_DIR)/Breadcrumb.framework/Headers
 
 	# copy headers
-	rsync -ra $(libBreadcrumb_PUBLIC_HEADERS) $(THEOS_OBJ_DIR)/libBreadcrumb.framework/Headers
+	rsync -ra $(Breadcrumb_PUBLIC_HEADERS) $(THEOS_OBJ_DIR)/Breadcrumb.framework/Headers
 
 	# copy to theos lib dir
-	rsync -ra $(THEOS_OBJ_DIR)/libBreadcrumb.framework $(THEOS)/lib
+	rsync -ra $(THEOS_OBJ_DIR)/Breadcrumb.framework $(THEOS)/lib
 
-after-libBreadcrumb-stage::
+after-Breadcrumb-stage::
 	# create directories
 	mkdir -p $(THEOS_STAGING_DIR)/usr/{include,lib}
 
-	# libbreadcrumb.dylib -> libBreadcrumb.framework
-	ln -s /Library/Frameworks/libBreadcrumb.framework/libBreadcrumb $(THEOS_STAGING_DIR)/usr/lib/libbreadcrumb.dylib
+	# breadcrumb.dylib -> Breadcrumb.framework
+	ln -s /Library/Frameworks/Breadcrumb.framework/Breadcrumb $(THEOS_STAGING_DIR)/usr/lib/breadcrumb.dylib
 
-	# libBreadcrumb -> libBreadcrumb.framework/Headers
-	ln -s /Library/Frameworks/libBreadcrumb.framework/Headers $(THEOS_STAGING_DIR)/usr/include/libBreadcrumb
+	# Breadcrumb -> Breadcrumb.framework/Headers
+	ln -s /Library/Frameworks/Breadcrumb.framework/Headers $(THEOS_STAGING_DIR)/usr/include/Breadcrumb
 
-	# libBreadcrumb -> libbreadcrumb.dylib
+	# Breadcrumb -> breadcrumb.dylib
 	mkdir -p $(THEOS_STAGING_DIR)/Library/MobileSubstrate/DynamicLibraries
-	ln -s /Library/Frameworks/libBreadcrumb.framework/libBreadcrumb $(THEOS_STAGING_DIR)/Library/MobileSubstrate/DynamicLibraries/libbreadcrumb.dylib
-	cp libbreadcrumb.plist $(THEOS_STAGING_DIR)/Library/MobileSubstrate/DynamicLibraries/libbreadcrumb.plist
+	ln -s /Library/Frameworks/Breadcrumb.framework/Breadcrumb $(THEOS_STAGING_DIR)/Library/MobileSubstrate/DynamicLibraries/breadcrumb.dylib
+	cp Breadcrumb.plist $(THEOS_STAGING_DIR)/Library/MobileSubstrate/DynamicLibraries/breadcrumb.plist
 
 after-install::
-	install.exec "killall -9 SpringBoard;"
+	install.exec "killall -9  backboardd || killall -9 SpringBoard;"

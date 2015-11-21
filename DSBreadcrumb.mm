@@ -1,9 +1,9 @@
-#import "UIBreadcrumbActionItem.h"
+#import "DSBreadcrumb.h"
 #import "Global.h"
 
-@implementation UIBreadcrumbActionItem
+@implementation DSBreadcrumb
 
--(UIBreadcrumbActionItem*)initWithTitle:(NSString*)title andBundleId:(NSString*)bundleId {
+-(DSBreadcrumb*)initWithTitle:(NSString*)title andBundleId:(NSString*)bundleId {
 	[self setTitle:title];
 	[self setBundleId:bundleId];
 	[self setNavigationContext:[NSClassFromString(@"UISystemNavigationActionDestinationContext") systemNavigationActionContextWithTitle:title bundleId:bundleId]];
@@ -25,12 +25,12 @@
 	return self;
 }
 
--(UIBreadcrumbActionItem*)initWithTitle:(NSString*)title andBundleId:(NSString*)bundleId withHandler:(id/*block*/)handler {
+-(DSBreadcrumb*)initWithTitle:(NSString*)title andBundleId:(NSString*)bundleId withHandler:(id/*block*/)handler {
 	[self setTitle:title];
 	[self setBundleId:bundleId];
 	[self setNavigationContext:[NSClassFromString(@"UISystemNavigationActionDestinationContext") systemNavigationActionContextWithTitle:title bundleId:bundleId]];
 	
-	UIBreadcrumbActionItem *context = self;
+	DSBreadcrumb *context = self;
 
 	id switchAppBlock = ^ void () {
 		[handler invoke];
@@ -46,7 +46,7 @@
 	return self;
 }
 
--(UIBreadcrumbActionItem*)initWithVisibleBreadcrumb {
+-(DSBreadcrumb*)initWithVisibleBreadcrumb {
 	UISystemNavigationAction *currentBreadcrumb = [[UIApplication sharedApplication] _systemNavigationAction];
 	UISystemNavigationActionDestinationContext *currentDestinationContext = [[currentBreadcrumb info] objectForSetting:1];
 
