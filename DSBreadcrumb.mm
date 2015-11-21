@@ -33,7 +33,7 @@
 	DSBreadcrumb *context = self;
 
 	id switchAppBlock = ^ void () {
-		[handler invoke];
+		handler();
 		[context hideBreadcrumb];
 	};
 
