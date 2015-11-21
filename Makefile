@@ -4,7 +4,7 @@ ARCHS = armv7 arm64
 include theos/makefiles/common.mk
 
 FRAMEWORK_NAME = Breadcrumb
-Breadcrumb_FILES = Breadcrumb.xm DSBreadcrumb.mm LBGlobal.m
+Breadcrumb_FILES = Breadcrumb.xm DSBreadcrumb.mm DSGlobal.m
 Breadcrumb_INSTALL_PATH = /Library/Frameworks
 Breadcrumb_FRAMEWORKS = UIKit MobileCoreServices
 Breadcrumb_PRIVATE_FRAMEWORKS = AppSupport

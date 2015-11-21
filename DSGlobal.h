@@ -1,4 +1,4 @@
-@interface LBGlobal : NSObject {
+@interface DSGlobal : NSObject {
 	bool _shouldHideBreadcrumb;
 }
 @property (assign) bool shouldHideBreadcrumb;

@@ -1,10 +1,10 @@
 #import <UIKit/UIKit.h>
 #import "Global.h"
-#import "LBGlobal.h"
+#import "DSGlobal.h"
 #include <objc/runtime.h>
 #define LHBLog(fmt, ...) NSLog((@"%s[Breadcrumb] " fmt @"%s"), "\e[1;35m", ##__VA_ARGS__, "\x1B[0m")
 
-@implementation LBGlobal
+@implementation DSGlobal
 
 +(id)sharedInstance {
 	static id sharedInstance = nil;
