@@ -9,7 +9,7 @@
 	[self setNavigationContext:[NSClassFromString(@"UISystemNavigationActionDestinationContext") systemNavigationActionContextWithTitle:title bundleId:bundleId]];
 	
 	id switchAppBlock = ^ void () {
-		CPDistributedMessagingCenter *messagingCenter = [NSClassFromString(@"CPDistributedMessagingCenter") centerNamed:@"net.douglassoares.libBreadcrumb"];
+		CPDistributedMessagingCenter *messagingCenter = [NSClassFromString(@"CPDistributedMessagingCenter") centerNamed:@"net.douglassoares.Breadcrumb"];
 		rocketbootstrap_distributedmessagingcenter_apply(messagingCenter);
 		NSDictionary *userInfo = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"shouldHideBreadcrumb"];
 		[messagingCenter sendMessageName:@"setShouldHideBreadcrumb" userInfo:userInfo];
