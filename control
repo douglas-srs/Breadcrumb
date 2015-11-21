@@ -1,0 +1,10 @@
+Package: net.douglassoares.libbreadcrumb
+Name: libBreadcrumb
+Depends: com.rpetrich.rocketbootstrap
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome framework of some sort!!
+Maintainer: Douglas Soares
+Author: Douglas Soares
+Section: System
+Tag: role::developer
